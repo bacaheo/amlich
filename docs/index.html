@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vietnamese Lunar Calendar (Âm Lịch) - Node.js library for converting dates between solar and lunar calendars">
+    <meta name="keywords" content="lunar calendar, solar calendar, Vietnamese calendar, âm lịch, date conversion, Julian day, Node.js">
+    <title>Amlich - Vietnamese Lunar Calendar Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="moon-icon">🌙</span>
+                    <h1>Amlich</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#overview" class="nav-link">
+                        <span class="language-content" data-lang="en">Overview</span>
+                        <span class="language-content hidden" data-lang="vi">Tổng quan</span>
+                    </a>
+                    <a href="#features" class="nav-link">
+                        <span class="language-content" data-lang="en">Features</span>
+                        <span class="language-content hidden" data-lang="vi">Tính năng</span>
+                    </a>
+                    <a href="#installation" class="nav-link">
+                        <span class="language-content" data-lang="en">Installation</span>
+                        <span class="language-content hidden" data-lang="vi">Cài đặt</span>
+                    </a>
+                    <a href="#usage" class="nav-link">
+                        <span class="language-content" data-lang="en">Usage</span>
+                        <span class="language-content hidden" data-lang="vi">Hướng dẫn</span>
+                    </a>
+                    <a href="#resources" class="nav-link">
+                        <span class="language-content" data-lang="en">Resources</span>
+                        <span class="language-content hidden" data-lang="vi">Tài nguyên</span>
+                    </a>
+                    <a href="https://github.com/vanng822/amlich" class="nav-link" target="_blank" rel="noopener noreferrer">
+                        <span class="language-content" data-lang="en">GitHub</span>
+                        <span class="language-content hidden" data-lang="vi">GitHub</span>
+                    </a>
+                    <button id="langToggle" class="lang-toggle" aria-label="Toggle language">
+                        <span id="langToggleText">EN</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="language-content" data-lang="en">
+                        <h2 class="hero-title">Vietnamese Lunar Calendar</h2>
+                        <p class="hero-subtitle">Convert dates between solar and lunar calendars with precision astronomical algorithms</p>
+                        <div class="hero-buttons">
+                            <a href="#installation" class="btn btn-primary">Get Started</a>
+                            <a href="https://github.com/vanng822/amlich" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                        </div>
+                    </div>
+                    <div class="language-content hidden" data-lang="vi">
+                        <h2 class="hero-title">Lịch Âm Việt Nam</h2>
+                        <p class="hero-subtitle">Chuyển đổi ngày tháng giữa dương lịch và âm lịch với thuật toán thiên văn chính xác</p>
+                        <div class="hero-buttons">
+                            <a href="#installation" class="btn btn-primary">Bắt Đầu</a>
+                            <a href="https://github.com/vanng822/amlich" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Xem trên GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="overview">
+            <div class="container">
+                <div class="language-content" data-lang="en">
+                    <h2 class="section-title">About the Project</h2>
+                    <p class="overview-text">
+                        Amlich is a Node.js module for converting dates between the Gregorian (solar) calendar and the Vietnamese lunar calendar. 
+                        Built on the astronomical algorithms from <strong>Hồ Ngọc Đức's</strong> work, which is based on Jean Meeus's 
+                        "Astronomical Algorithms" (1998), this library provides accurate date conversions and Julian day calculations.
+                    </p>
+                    <p class="overview-text">
+                        The Vietnamese lunar calendar is a lunisolar calendar that has been traditionally used for centuries to determine 
+                        festivals, holidays, and auspicious dates. This library makes it easy to work with lunar dates in modern applications.
+                    </p>
+                </div>
+                <div class="language-content hidden" data-lang="vi">
+                    <h2 class="section-title">Giới Thiệu Dự Án</h2>
+                    <p class="overview-text">
+                        Amlich là một module Node.js để chuyển đổi ngày tháng giữa lịch Gregorian (dương lịch) và lịch âm Việt Nam.
+                        Được xây dựng dựa trên các thuật toán thiên văn của <strong>Hồ Ngọc Đức</strong>, vốn dựa trên cuốn 
+                        "Astronomical Algorithms" (1998) của Jean Meeus, thư viện này cung cấp việc chuyển đổi ngày chính xác và tính toán Julian day.
+                    </p>
+                    <p class="overview-text">
+                        Lịch âm Việt Nam là một lịch âm dương đã được sử dụng truyền thống qua nhiều thế kỷ để xác định các 
+                        lễ hội, ngày lễ và ngày tốt. Thư viện này giúp làm việc với ngày âm lịch dễ dàng trong các ứng dụng hiện đại.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <div class="language-content" data-lang="en">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📅</div>
+                            <h3>Solar to Lunar Conversion</h3>
+                            <p>Convert Gregorian calendar dates to Vietnamese lunar calendar dates with timezone support</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌍</div>
+                            <h3>Lunar to Solar Conversion</h3>
+                            <p>Convert lunar calendar dates back to solar dates, including leap month handling</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Julian Day Calculations</h3>
+                            <p>Compute Julian day numbers and convert between Julian days and calendar dates</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔬</div>
+                            <h3>Astronomical Accuracy</h3>
+                            <p>Based on proven astronomical algorithms from Jean Meeus's reference work</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🕐</div>
+                            <h3>Timezone Support</h3>
+                            <p>Handle different timezones for accurate conversions across regions</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌟</div>
+                            <h3>Leap Month Detection</h3>
+                            <p>Automatically detect and handle leap months in the lunar calendar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-content hidden" data-lang="vi">
+                    <h2 class="section-title">Tính Năng Chính</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📅</div>
+                            <h3>Chuyển Đổi Dương Lịch sang Âm Lịch</h3>
+                            <p>Chuyển đổi ngày dương lịch Gregorian sang ngày âm lịch Việt Nam với hỗ trợ múi giờ</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌍</div>
+                            <h3>Chuyển Đổi Âm Lịch sang Dương Lịch</h3>
+                            <p>Chuyển đổi ngày âm lịch trở lại dương lịch, bao gồm cả xử lý tháng nhuận</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Tính Toán Julian Day</h3>
+                            <p>Tính số ngày Julian và chuyển đổi giữa Julian day và ngày lịch</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔬</div>
+                            <h3>Độ Chính Xác Thiên Văn</h3>
+                            <p>Dựa trên các thuật toán thiên văn đã được kiểm chứng từ công trình của Jean Meeus</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🕐</div>
+                            <h3>Hỗ Trợ Múi Giờ</h3>
+                            <p>Xử lý các múi giờ khác nhau để chuyển đổi chính xác qua các khu vực</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌟</div>
+                            <h3>Phát Hiện Tháng Nhuận</h3>
+                            <p>Tự động phát hiện và xử lý tháng nhuận trong lịch âm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation" class="installation">
+            <div class="container">
+                <div class="language-content" data-lang="en">
+                    <h2 class="section-title">Installation</h2>
+                    <p class="section-subtitle">Install the package via npm:</p>
+                    <div class="code-block">
+                        <pre><code>npm install amlich</code></pre>
+                        <button class="copy-btn" data-code="npm install amlich" aria-label="Copy to clipboard">
+                            <span class="copy-icon">📋</span>
+                        </button>
+                    </div>
+                    <p class="section-subtitle">Or using yarn:</p>
+                    <div class="code-block">
+                        <pre><code>yarn add amlich</code></pre>
+                        <button class="copy-btn" data-code="yarn add amlich" aria-label="Copy to clipboard">
+                            <span class="copy-icon">📋</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="language-content hidden" data-lang="vi">
+                    <h2 class="section-title">Cài Đặt</h2>
+                    <p class="section-subtitle">Cài đặt package qua npm:</p>
+                    <div class="code-block">
+                        <pre><code>npm install amlich</code></pre>
+                        <button class="copy-btn" data-code="npm install amlich" aria-label="Copy to clipboard">
+                            <span class="copy-icon">📋</span>
+                        </button>
+                    </div>
+                    <p class="section-subtitle">Hoặc sử dụng yarn:</p>
+                    <div class="code-block">
+                        <pre><code>yarn add amlich</code></pre>
+                        <button class="copy-btn" data-code="yarn add amlich" aria-label="Copy to clipboard">
+                            <span class="copy-icon">📋</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="usage">
+            <div class="container">
+                <div class="language-content" data-lang="en">
+                    <h2 class="section-title">Usage Examples</h2>
+                    
+                    <div class="usage-example">
+                        <h3 class="example-title">Import the Library</h3>
+                        <div class="code-block">
+                            <pre><code>const amlich = require('amlich');</code></pre>
+                            <button class="copy-btn" data-code="const amlich = require('amlich');" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Convert Solar Date to Lunar Date</h3>
+                        <p class="example-description">Convert a Gregorian date to Vietnamese lunar date. The timezone parameter is UTC offset (7.0 for Vietnam, UTC+7).</p>
+                        <div class="code-block">
+                            <pre><code>// Convert January 1, 2024 to lunar date
+const lunarDate = amlich.convertSolar2Lunar(1, 1, 2024, 7.0);
+// Returns: [day, month, year, leapMonth]
+// Example output: [20, 11, 2023, 0]
+// Means: 20th day of 11th lunar month, year 2023
+
+console.log(`Lunar date: ${lunarDate[0]}/${lunarDate[1]}/${lunarDate[2]}`);
+console.log(`Is leap month: ${lunarDate[3] === 1 ? 'Yes' : 'No'}`);</code></pre>
+                            <button class="copy-btn" data-code="// Convert January 1, 2024 to lunar date
+const lunarDate = amlich.convertSolar2Lunar(1, 1, 2024, 7.0);
+// Returns: [day, month, year, leapMonth]
+// Example output: [20, 11, 2023, 0]
+// Means: 20th day of 11th lunar month, year 2023
+
+console.log(`Lunar date: ${lunarDate[0]}/${lunarDate[1]}/${lunarDate[2]}`);
+console.log(`Is leap month: ${lunarDate[3] === 1 ? 'Yes' : 'No'}`);" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Convert Lunar Date to Solar Date</h3>
+                        <p class="example-description">Convert a Vietnamese lunar date back to Gregorian date. Set leapMonth to 1 if the lunar month is a leap month, otherwise 0.</p>
+                        <div class="code-block">
+                            <pre><code>// Convert 1st day of 1st lunar month, year 2024
+const solarDate = amlich.convertLunar2Solar(1, 1, 2024, 0, 7.0);
+// Returns: [day, month, year]
+// Example output: [10, 2, 2024]
+// Means: February 10, 2024
+
+console.log(`Solar date: ${solarDate[0]}/${solarDate[1]}/${solarDate[2]}`);</code></pre>
+                            <button class="copy-btn" data-code="// Convert 1st day of 1st lunar month, year 2024
+const solarDate = amlich.convertLunar2Solar(1, 1, 2024, 0, 7.0);
+// Returns: [day, month, year]
+// Example output: [10, 2, 2024]
+// Means: February 10, 2024
+
+console.log(`Solar date: ${solarDate[0]}/${solarDate[1]}/${solarDate[2]}`);" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Calculate Julian Day Number</h3>
+                        <p class="example-description">Calculate the Julian day number for a given date. This is the number of days since January 1, 4713 BC (Julian calendar).</p>
+                        <div class="code-block">
+                            <pre><code>// Calculate Julian day for January 1, 2024
+const jd = amlich.jdFromDate(1, 1, 2024);
+console.log(`Julian day: ${jd}`);
+// Output: 2460310</code></pre>
+                            <button class="copy-btn" data-code="// Calculate Julian day for January 1, 2024
+const jd = amlich.jdFromDate(1, 1, 2024);
+console.log(`Julian day: ${jd}`);
+// Output: 2460310" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Convert Julian Day to Date</h3>
+                        <p class="example-description">Convert a Julian day number back to a Gregorian date.</p>
+                        <div class="code-block">
+                            <pre><code>// Convert Julian day to date
+const date = amlich.jdToDate(2460310);
+console.log(`Date: ${date[0]}/${date[1]}/${date[2]}`);
+// Output: Date: 1/1/2024</code></pre>
+                            <button class="copy-btn" data-code="// Convert Julian day to date
+const date = amlich.jdToDate(2460310);
+console.log(`Date: ${date[0]}/${date[1]}/${date[2]}`);
+// Output: Date: 1/1/2024" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="language-content hidden" data-lang="vi">
+                    <h2 class="section-title">Ví Dụ Sử Dụng</h2>
+                    
+                    <div class="usage-example">
+                        <h3 class="example-title">Import Thư Viện</h3>
+                        <div class="code-block">
+                            <pre><code>const amlich = require('amlich');</code></pre>
+                            <button class="copy-btn" data-code="const amlich = require('amlich');" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Chuyển Đổi Dương Lịch sang Âm Lịch</h3>
+                        <p class="example-description">Chuyển đổi ngày dương lịch Gregorian sang ngày âm lịch Việt Nam. Tham số timezone là UTC offset (7.0 cho Việt Nam, UTC+7).</p>
+                        <div class="code-block">
+                            <pre><code>// Chuyển đổi ngày 1 tháng 1 năm 2024 sang âm lịch
+const lunarDate = amlich.convertSolar2Lunar(1, 1, 2024, 7.0);
+// Trả về: [ngày, tháng, năm, thángNhuận]
+// Ví dụ kết quả: [20, 11, 2023, 0]
+// Nghĩa là: Ngày 20 tháng 11 âm lịch, năm 2023
+
+console.log(`Ngày âm lịch: ${lunarDate[0]}/${lunarDate[1]}/${lunarDate[2]}`);
+console.log(`Có phải tháng nhuận: ${lunarDate[3] === 1 ? 'Có' : 'Không'}`);</code></pre>
+                            <button class="copy-btn" data-code="// Chuyển đổi ngày 1 tháng 1 năm 2024 sang âm lịch
+const lunarDate = amlich.convertSolar2Lunar(1, 1, 2024, 7.0);
+// Trả về: [ngày, tháng, năm, thángNhuận]
+// Ví dụ kết quả: [20, 11, 2023, 0]
+// Nghĩa là: Ngày 20 tháng 11 âm lịch, năm 2023
+
+console.log(`Ngày âm lịch: ${lunarDate[0]}/${lunarDate[1]}/${lunarDate[2]}`);
+console.log(`Có phải tháng nhuận: ${lunarDate[3] === 1 ? 'Có' : 'Không'}`);" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Chuyển Đổi Âm Lịch sang Dương Lịch</h3>
+                        <p class="example-description">Chuyển đổi ngày âm lịch Việt Nam trở lại dương lịch Gregorian. Đặt leapMonth là 1 nếu tháng âm lịch là tháng nhuận, ngược lại là 0.</p>
+                        <div class="code-block">
+                            <pre><code>// Chuyển đổi ngày 1 tháng 1 âm lịch, năm 2024
+const solarDate = amlich.convertLunar2Solar(1, 1, 2024, 0, 7.0);
+// Trả về: [ngày, tháng, năm]
+// Ví dụ kết quả: [10, 2, 2024]
+// Nghĩa là: Ngày 10 tháng 2 năm 2024
+
+console.log(`Ngày dương lịch: ${solarDate[0]}/${solarDate[1]}/${solarDate[2]}`);</code></pre>
+                            <button class="copy-btn" data-code="// Chuyển đổi ngày 1 tháng 1 âm lịch, năm 2024
+const solarDate = amlich.convertLunar2Solar(1, 1, 2024, 0, 7.0);
+// Trả về: [ngày, tháng, năm]
+// Ví dụ kết quả: [10, 2, 2024]
+// Nghĩa là: Ngày 10 tháng 2 năm 2024
+
+console.log(`Ngày dương lịch: ${solarDate[0]}/${solarDate[1]}/${solarDate[2]}`);" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Tính Số Ngày Julian</h3>
+                        <p class="example-description">Tính số ngày Julian cho một ngày cho trước. Đây là số ngày kể từ ngày 1 tháng 1 năm 4713 trước Công nguyên (lịch Julian).</p>
+                        <div class="code-block">
+                            <pre><code>// Tính Julian day cho ngày 1 tháng 1 năm 2024
+const jd = amlich.jdFromDate(1, 1, 2024);
+console.log(`Số ngày Julian: ${jd}`);
+// Kết quả: 2460310</code></pre>
+                            <button class="copy-btn" data-code="// Tính Julian day cho ngày 1 tháng 1 năm 2024
+const jd = amlich.jdFromDate(1, 1, 2024);
+console.log(`Số ngày Julian: ${jd}`);
+// Kết quả: 2460310" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="usage-example">
+                        <h3 class="example-title">Chuyển Đổi Số Ngày Julian sang Ngày Tháng</h3>
+                        <p class="example-description">Chuyển đổi một số ngày Julian trở lại ngày dương lịch Gregorian.</p>
+                        <div class="code-block">
+                            <pre><code>// Chuyển đổi số ngày Julian sang ngày tháng
+const date = amlich.jdToDate(2460310);
+console.log(`Ngày: ${date[0]}/${date[1]}/${date[2]}`);
+// Kết quả: Ngày: 1/1/2024</code></pre>
+                            <button class="copy-btn" data-code="// Chuyển đổi số ngày Julian sang ngày tháng
+const date = amlich.jdToDate(2460310);
+console.log(`Ngày: ${date[0]}/${date[1]}/${date[2]}`);
+// Kết quả: Ngày: 1/1/2024" aria-label="Copy to clipboard">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="api">
+            <div class="container">
+                <div class="language-content" data-lang="en">
+                    <h2 class="section-title">API Reference</h2>
+                    <div class="api-grid">
+                        <div class="api-item">
+                            <h3 class="api-name">jdFromDate(dd, mm, yyyy)</h3>
+                            <p class="api-description">Calculate Julian day number (the number of days between 1/1/4713 BC Julian calendar and dd/mm/yyyy)</p>
+                            <div class="api-params">
+                                <strong>Parameters:</strong>
+                                <ul>
+                                    <li><code>dd</code> - Day of month (1-31)</li>
+                                    <li><code>mm</code> - Month (1-12)</li>
+                                    <li><code>yyyy</code> - Year</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Returns:</strong> Integer Julian day number
+                            </div>
+                        </div>
+                        <div class="api-item">
+                            <h3 class="api-name">jdToDate(jd)</h3>
+                            <p class="api-description">Convert a Julian day number to day/month/year</p>
+                            <div class="api-params">
+                                <strong>Parameters:</strong>
+                                <ul>
+                                    <li><code>jd</code> - Julian day number (integer)</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Returns:</strong> Array [day, month, year]
+                            </div>
+                        </div>
+                        <div class="api-item">
+                            <h3 class="api-name">convertSolar2Lunar(dd, mm, yyyy, timeZone)</h3>
+                            <p class="api-description">Convert solar date dd/mm/yyyy to the corresponding lunar date</p>
+                            <div class="api-params">
+                                <strong>Parameters:</strong>
+                                <ul>
+                                    <li><code>dd</code> - Day of month (1-31)</li>
+                                    <li><code>mm</code> - Month (1-12)</li>
+                                    <li><code>yyyy</code> - Year</li>
+                                    <li><code>timeZone</code> - UTC offset (e.g., 7.0 for UTC+7)</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Returns:</strong> Array [lunarDay, lunarMonth, lunarYear, leapMonth]
+                            </div>
+                        </div>
+                        <div class="api-item">
+                            <h3 class="api-name">convertLunar2Solar(lunarDay, lunarMonth, lunarYear, lunarLeap, timeZone)</h3>
+                            <p class="api-description">Convert a lunar date to the corresponding solar date</p>
+                            <div class="api-params">
+                                <strong>Parameters:</strong>
+                                <ul>
+                                    <li><code>lunarDay</code> - Lunar day (1-30)</li>
+                                    <li><code>lunarMonth</code> - Lunar month (1-12)</li>
+                                    <li><code>lunarYear</code> - Lunar year</li>
+                                    <li><code>lunarLeap</code> - Is leap month (0 or 1)</li>
+                                    <li><code>timeZone</code> - UTC offset (e.g., 7.0 for UTC+7)</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Returns:</strong> Array [day, month, year]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-content hidden" data-lang="vi">
+                    <h2 class="section-title">Tài Liệu API</h2>
+                    <div class="api-grid">
+                        <div class="api-item">
+                            <h3 class="api-name">jdFromDate(dd, mm, yyyy)</h3>
+                            <p class="api-description">Tính số ngày Julian (số ngày giữa 1/1/4713 trước Công nguyên lịch Julian và dd/mm/yyyy)</p>
+                            <div class="api-params">
+                                <strong>Tham số:</strong>
+                                <ul>
+                                    <li><code>dd</code> - Ngày trong tháng (1-31)</li>
+                                    <li><code>mm</code> - Tháng (1-12)</li>
+                                    <li><code>yyyy</code> - Năm</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Trả về:</strong> Số ngày Julian kiểu integer
+                            </div>
+                        </div>
+                        <div class="api-item">
+                            <h3 class="api-name">jdToDate(jd)</h3>
+                            <p class="api-description">Chuyển đổi số ngày Julian sang ngày/tháng/năm</p>
+                            <div class="api-params">
+                                <strong>Tham số:</strong>
+                                <ul>
+                                    <li><code>jd</code> - Số ngày Julian (integer)</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Trả về:</strong> Mảng [ngày, tháng, năm]
+                            </div>
+                        </div>
+                        <div class="api-item">
+                            <h3 class="api-name">convertSolar2Lunar(dd, mm, yyyy, timeZone)</h3>
+                            <p class="api-description">Chuyển đổi ngày dương lịch dd/mm/yyyy sang ngày âm lịch tương ứng</p>
+                            <div class="api-params">
+                                <strong>Tham số:</strong>
+                                <ul>
+                                    <li><code>dd</code> - Ngày trong tháng (1-31)</li>
+                                    <li><code>mm</code> - Tháng (1-12)</li>
+                                    <li><code>yyyy</code> - Năm</li>
+                                    <li><code>timeZone</code> - UTC offset (ví dụ: 7.0 cho UTC+7)</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Trả về:</strong> Mảng [ngàyÂmLịch, thángÂmLịch, nămÂmLịch, thángNhuận]
+                            </div>
+                        </div>
+                        <div class="api-item">
+                            <h3 class="api-name">convertLunar2Solar(lunarDay, lunarMonth, lunarYear, lunarLeap, timeZone)</h3>
+                            <p class="api-description">Chuyển đổi ngày âm lịch sang ngày dương lịch tương ứng</p>
+                            <div class="api-params">
+                                <strong>Tham số:</strong>
+                                <ul>
+                                    <li><code>lunarDay</code> - Ngày âm lịch (1-30)</li>
+                                    <li><code>lunarMonth</code> - Tháng âm lịch (1-12)</li>
+                                    <li><code>lunarYear</code> - Năm âm lịch</li>
+                                    <li><code>lunarLeap</code> - Có phải tháng nhuận (0 hoặc 1)</li>
+                                    <li><code>timeZone</code> - UTC offset (ví dụ: 7.0 cho UTC+7)</li>
+                                </ul>
+                            </div>
+                            <div class="api-return">
+                                <strong>Trả về:</strong> Mảng [ngày, tháng, năm]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="resources">
+            <div class="container">
+                <div class="language-content" data-lang="en">
+                    <h2 class="section-title">Resources & Links</h2>
+                    <div class="resource-grid">
+                        <a href="https://github.com/vanng822/amlich" class="resource-card" target="_blank" rel="noopener noreferrer">
+                            <div class="resource-icon">📦</div>
+                            <h3>GitHub Repository</h3>
+                            <p>View source code, report issues, and contribute</p>
+                        </a>
+                        <a href="https://www.npmjs.com/package/amlich" class="resource-card" target="_blank" rel="noopener noreferrer">
+                            <div class="resource-icon">📚</div>
+                            <h3>NPM Package</h3>
+                            <p>View package details and download statistics</p>
+                        </a>
+                        <a href="http://www.informatik.uni-leipzig.de/~duc/amlich/" class="resource-card" target="_blank" rel="noopener noreferrer">
+                            <div class="resource-icon">🔬</div>
+                            <h3>Original Algorithm</h3>
+                            <p>Learn about Hồ Ngọc Đức's astronomical work</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="language-content hidden" data-lang="vi">
+                    <h2 class="section-title">Tài Nguyên & Liên Kết</h2>
+                    <div class="resource-grid">
+                        <a href="https://github.com/vanng822/amlich" class="resource-card" target="_blank" rel="noopener noreferrer">
+                            <div class="resource-icon">📦</div>
+                            <h3>GitHub Repository</h3>
+                            <p>Xem mã nguồn, báo cáo vấn đề và đóng góp</p>
+                        </a>
+                        <a href="https://www.npmjs.com/package/amlich" class="resource-card" target="_blank" rel="noopener noreferrer">
+                            <div class="resource-icon">📚</div>
+                            <h3>NPM Package</h3>
+                            <p>Xem chi tiết package và thống kê tải xuống</p>
+                        </a>
+                        <a href="http://www.informatik.uni-leipzig.de/~duc/amlich/" class="resource-card" target="_blank" rel="noopener noreferrer">
+                            <div class="resource-icon">🔬</div>
+                            <h3>Thuật Toán Gốc</h3>
+                            <p>Tìm hiểu về công trình thiên văn của Hồ Ngọc Đức</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="language-content" data-lang="en">
+                <p class="footer-text">
+                    Built with astronomical algorithms by <strong>Hồ Ngọc Đức</strong> based on Jean Meeus's "Astronomical Algorithms" (1998)
+                </p>
+                <p class="footer-text">
+                    Licensed under personal, non-commercial use terms. See repository for details.
+                </p>
+            </div>
+            <div class="language-content hidden" data-lang="vi">
+                <p class="footer-text">
+                    Được xây dựng với các thuật toán thiên văn của <strong>Hồ Ngọc Đức</strong> dựa trên "Astronomical Algorithms" của Jean Meeus (1998)
+                </p>
+                <p class="footer-text">
+                    Được cấp phép cho mục đích sử dụng cá nhân, phi thương mại. Xem repository để biết chi tiết.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
